@@ -3,7 +3,7 @@ name = "clearlinux"
 version = "1.0.0"
 edition = "2021"
 description = "A beautiful Linux system cleaner CLI tool"
-authors = ["ClearLinux"]
+authors = ["PluvCoder"]
 
 [[bin]]
 name = "clearlinux"
