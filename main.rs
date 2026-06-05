@@ -7,9 +7,7 @@ use std::path::{Path, PathBuf};
 use std::process::Command;
 use std::time::Duration;
 
-// ─────────────────────────────────────────────
-//  OS check — abort immediately on non-Linux
-// ─────────────────────────────────────────────
+
 #[cfg(not(target_os = "linux"))]
 fn check_linux() {
     eprintln!(
@@ -29,7 +27,7 @@ fn check_linux() {
 fn check_linux() {}
 
 // ─────────────────────────────────────────────
-//  Banner
+//  fucking banner
 // ─────────────────────────────────────────────
 fn print_banner() {
     println!();
@@ -83,7 +81,7 @@ fn print_banner() {
 }
 
 // ─────────────────────────────────────────────
-//  Distro detection
+//  Linux Distro Detect
 // ─────────────────────────────────────────────
 fn detect_distro() -> String {
     if let Ok(content) = fs::read_to_string("/etc/os-release") {
@@ -142,7 +140,7 @@ fn print_system_info() {
 }
 
 // ─────────────────────────────────────────────
-//  Helpers: directory size + file collection
+//  Helpers: directory size 
 // ─────────────────────────────────────────────
 fn dir_size(path: &Path) -> u64 {
     if !path.exists() {
@@ -179,7 +177,7 @@ fn collect_files(path: &Path, files: &mut Vec<PathBuf>) {
 }
 
 // ─────────────────────────────────────────────
-//  Scanning
+//  Scan
 // ─────────────────────────────────────────────
 struct ScanResult {
     name: String,
@@ -321,7 +319,7 @@ fn scan_targets() -> Vec<ScanResult> {
 }
 
 // ─────────────────────────────────────────────
-//  Display scan results table
+//  Results
 // ─────────────────────────────────────────────
 fn print_scan_table(results: &[ScanResult]) {
     println!("{}", "┌─ Scan Results ──────────────────────────────────────────────────┐".cyan());
@@ -485,7 +483,7 @@ fn run_clean(selected: &[ScanResult]) {
 }
 
 // ─────────────────────────────────────────────
-//  Entry point
+//  Final Results
 // ─────────────────────────────────────────────
 fn main() {
     // 1. OS gate
