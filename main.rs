@@ -26,9 +26,6 @@ fn check_linux() {
 #[cfg(target_os = "linux")]
 fn check_linux() {}
 
-// ─────────────────────────────────────────────
-//  fucking banner
-// ─────────────────────────────────────────────
 fn print_banner() {
     println!();
     println!("{}", "╔══════════════════════════════════════════════╗".cyan().bold());
@@ -80,9 +77,7 @@ fn print_banner() {
     println!();
 }
 
-// ─────────────────────────────────────────────
-//  Linux Distro Detect
-// ─────────────────────────────────────────────
+
 fn detect_distro() -> String {
     if let Ok(content) = fs::read_to_string("/etc/os-release") {
         for line in content.lines() {
@@ -119,7 +114,7 @@ fn print_system_info() {
         })
         .unwrap_or_else(|| "unknown".to_string());
 
-    // Disk usage on /
+    
     let disk = Command::new("df")
         .args(["-h", "--output=used,avail,pcent", "/"])
         .output()
@@ -139,9 +134,7 @@ fn print_system_info() {
     println!();
 }
 
-// ─────────────────────────────────────────────
-//  Helpers: directory size 
-// ─────────────────────────────────────────────
+
 fn dir_size(path: &Path) -> u64 {
     if !path.exists() {
         return 0;
@@ -176,9 +169,7 @@ fn collect_files(path: &Path, files: &mut Vec<PathBuf>) {
     }
 }
 
-// ─────────────────────────────────────────────
-//  Scan
-// ─────────────────────────────────────────────
+
 struct ScanResult {
     name: String,
     description: String,
@@ -318,9 +309,7 @@ fn scan_targets() -> Vec<ScanResult> {
     results
 }
 
-// ─────────────────────────────────────────────
-//  Results
-// ─────────────────────────────────────────────
+
 fn print_scan_table(results: &[ScanResult]) {
     println!("{}", "┌─ Scan Results ──────────────────────────────────────────────────┐".cyan());
     println!(
@@ -364,9 +353,7 @@ fn print_scan_table(results: &[ScanResult]) {
     println!();
 }
 
-// ─────────────────────────────────────────────
-//  Cleaning
-// ─────────────────────────────────────────────
+
 fn clean_path(path: &Path, log_name: &str) -> (u64, u32) {
     let mut freed: u64 = 0;
     let mut count: u32 = 0;
@@ -482,9 +469,7 @@ fn run_clean(selected: &[ScanResult]) {
     println!("{}", "└─────────────────────────────────────────────────────────────────┘".green().bold());
 }
 
-// ─────────────────────────────────────────────
-//  Final Results
-// ─────────────────────────────────────────────
+
 fn main() {
     // 1. OS gate
     check_linux();
