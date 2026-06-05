@@ -13,7 +13,7 @@ fn check_linux() {
     eprintln!(
         "\n{} {}",
         "✗".red().bold(),
-        "ClearLinux only runs on Linux!".red().bold()
+        "ClearLinux only runs on Linux".red().bold()
     );
     eprintln!(
         "  {} Detected OS: {}",
@@ -126,10 +126,10 @@ fn print_system_info() {
         .unwrap_or_else(|| "unavailable".to_string());
 
     println!("{}", "┌─ System Info ───────────────────────────────┐".cyan());
-    println!("{}  {}  {}", "│".cyan(), format!("🐧  Distro : {}", distro).white(), "".cyan());
-    println!("{}  {}  {}", "│".cyan(), format!("🔧  Kernel : {}", kernel).white(), "".cyan());
-    println!("{}  {}  {}", "│".cyan(), format!("⏱   Uptime : {}", uptime).white(), "".cyan());
-    println!("{}  {}  {}", "│".cyan(), format!("💾  Disk   : {} (used / free / %)", disk).white(), "".cyan());
+    println!("{}  {}  {}", "│".cyan(), format!(" Linux Distro : {}", distro).white(), "".cyan());
+    println!("{}  {}  {}", "│".cyan(), format!(" Kernel : {}", kernel).white(), "".cyan());
+    println!("{}  {}  {}", "│".cyan(), format!(" Uptime : {}", uptime).white(), "".cyan());
+    println!("{}  {}  {}", "│".cyan(), format!(" Disk   : {} (used / free / %)", disk).white(), "".cyan());
     println!("{}", "└─────────────────────────────────────────────┘".cyan());
     println!();
 }
